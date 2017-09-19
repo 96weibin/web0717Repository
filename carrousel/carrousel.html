@@ -97,6 +97,9 @@
         $('ul li:first').clone().appendTo($('ul'));
         var index = 0;
         $('.rBtn').click(function(e){
+            if($('ul').is(':animated')){
+                return;
+            }
             index ++
             $('ul').animate({'left':-1000 * index}, 400, function() {
                 if(index >= 4){
@@ -120,6 +123,9 @@
             $('.point').eq(idx).addClass('red').siblings().removeClass('red');
         }
         $('.lBtn').click(function(){
+            if($('ul').is(':animated')){
+                return;
+            }
             if(index <= 0){
                 index = 4;
                 // $(this).css({'left':-4000})
