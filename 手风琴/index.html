@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .accordion{
+            width: 500px;
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+        .accordion ul{
+            list-style: none;
+        }
+        .accordion ul li.cur h3{
+            background: orange;
+        }
+        .accordion ul li h3{
+            line-height: 40px;
+            background: skyblue;
+            padding: 0 10px;
+            border-bottom: 1px solid #000;
+            color: white;
+            cursor: pointer;
+            position: relative;
+        }
+        .accordion ul li .content{
+            padding: 10px;
+            line-height: 150%;
+            font-size: 16px;
+            display: none;
+        }
+        .accordion ul li.first .content{
+            display: block;
+        }
+        .accordion ul li i{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            background-color: yellow;
+            background: url(img/icon.png);
+            transition: all 1s ease 0s;
+        }
+        .accordion ul li.cur i{
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <ul>
+            <li class='cur first'>
+                <h3>12345678<i></i></h3>
+                <div class="content">
+                    <p>4567890-</p>
+                </div>
+            </li>
+            <li>
+                <h3>12345678<i></i></h3>
+                <div class="content">
+                    <p>4567890-</p>
+                </div>
+            </li>
+            <li>
+                <h3>12345678<i></i></h3>
+                <div class="content">
+                    <p>4567890-</p>
+                </div>
+            </li>
+            <li>
+                <h3>12345678<i></i></h3>
+                <div class="content">
+                    <p>4567890-</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $('.accordion ul li h3').click(function() {
+            $('.content').slideUp();
+
+            if($(this).siblings('.content').is(':visible')) {
+                $(this).siblings('.content').stop(true).slideUp();
+                $(this).parent().removeClass('cur');
+            }else{
+                $('.cur').removeClass('cur');
+                $(this).parent().addClass('cur');
+                $(this).siblings('.content').stop(true).slideDown();
+            }
+        })
+    </script>
+</body>
+</html>
