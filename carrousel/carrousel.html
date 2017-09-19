@@ -42,9 +42,6 @@
         .rBtn{
             right: 0;  
         }
-        img{
-            /* position: absolute; */
-        }
         .box{
             width: 130px;
             height: 30px;
@@ -94,33 +91,37 @@
     </div>
     <script src='jquery-3.2.1.js'></script>
     <script>
+        var timer = setInterval(rightClick,1000);
+        $('.wrapper').mouseover(function(){clearInterval(timer)});
+        $('.wrapper').mouseleave(function(){setInterval(rightClick,1000)});
         $('ul li:first').clone().appendTo($('ul'));
         var index = 0;
-        $('.rBtn').click(function(e){
-            if($('ul').is(':animated')){
-                return;
-            }
-            index ++
-            $('ul').animate({'left':-1000 * index}, 400, function() {
-                if(index >= 4){
-                // console.log(this);
-                // console.log($(this));   //这里的$(this)是 dom  $(this)是数组？？、  
-                // console.log($('ul')[0]);
-                // $('ul')[0].style.left = 0;
-                $(this).css('left',0)
-                index = 0;
-            }
-            
-            });
-            changePoint();
-            
-        })
+        $('.rBtn').click(rightClick);
         function changePoint() {
             var idx = index;
             if(index == 4){
                 idx = 0;
             }
             $('.point').eq(idx).addClass('red').siblings().removeClass('red');
+        }
+
+        function rightClick(e){
+                if($('ul').is(':animated')){
+                    return;
+                }
+                index ++
+                $('ul').animate({'left':-1000 * index}, 400, function() {
+                    if(index >= 4){
+                        // console.log(this);
+                        // console.log($(this));   //这里的$(this)是 dom  $(this)是数组？？、  
+                        // console.log($('ul')[0]);
+                        // $('ul')[0].style.left = 0;
+                        $(this).css('left',0)
+                        index = 0;
+                    }
+            
+                });
+            changePoint(); 
         }
         $('.lBtn').click(function(){
             if($('ul').is(':animated')){
