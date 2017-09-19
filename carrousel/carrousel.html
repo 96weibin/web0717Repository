@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carrousel</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrapper{
+            width: 1000px;
+            height: 475px;
+            border: 2px solid pink;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            width: 99999px;
+            height: 475px;
+            position: absolute;
+        }
+        li{
+            float: left;
+        }
+        .btn{
+            width:150px;
+            height: 475px;
+            background: rgba(255, 255, 255, 0.2);
+            line-height: 475px;
+            text-align: center;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+        }
+        .lBtn{
+            left: 0;
+        }
+        .rBtn{
+            right: 0;  
+        }
+        img{
+            /* position: absolute; */
+        }
+        .box{
+            width: 130px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            /* display: -webkit-flex;
+            justify-content: center; */
+            /* margin-top: -50px; */
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -65px;
+            z-index: 6789;
+        }
+        .point{
+            float: left;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            /* background: blueviolet; */
+            background: #eee;
+            /* opacity: 0.4; */
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+        </ul>
+        <div class="box">
+            <div class="point red"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+        </div>
+        <div class="btn lBtn">上一张</div>
+        <div class="btn rBtn">下一张</div>
+    </div>
+    <script src='jquery-3.2.1.js'></script>
+    <script>
+        $('ul li:first').clone().appendTo($('ul'));
+        var index = 0;
+        $('.rBtn').click(function(e){
+            index ++
+            $('ul').animate({'left':-1000 * index}, 400, function() {
+                if(index >= 4){
+                // console.log(this);
+                // console.log($(this));   //这里的$(this)是 dom  $(this)是数组？？、  
+                // console.log($('ul')[0]);
+                // $('ul')[0].style.left = 0;
+                $(this).css('left',0)
+                index = 0;
+            }
+            
+            });
+            changePoint();
+            
+        })
+        function changePoint() {
+            var idx = index;
+            if(index == 4){
+                idx = 0;
+            }
+            $('.point').eq(idx).addClass('red').siblings().removeClass('red');
+        }
+        $('.lBtn').click(function(){
+            if(index <= 0){
+                index = 4;
+                // $(this).css({'left':-4000})
+                $('ul')[0].style.left = '-4000px';                
+            }
+            index--;
+            $('ul').animate({'left':-1000 * index}, 400, function() {
+            })
+            changePoint();                
+            
+        })
+
+    </script>
+</body>
+</html>
