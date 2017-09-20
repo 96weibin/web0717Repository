@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $('.box').append('<p>dfghjk</p>').css({'background':'#eee'})
+        var $p = $('<p>12345678</p>').css({'color':'red'});
+        $p.appendTo($('.box')).css({'font-size':'56px'})
+        var $befor = $('<p>befor</p>');
+        $befor.insertBefore($('.box'));
+        var $after = $('<p>after</p>');
+        $after.insertAfter($('.box')).css({'color':'green'});
+        var $prependTo = $('<p>prependTo内前叉</p>');
+        $prependTo.prependTo($('.box')).css({'color':'red'});
+        var $appendto = $('<p>appendto</p>');
+        $appendto.appendTo($('.box')).css({'color':'pink','font-size':'34px'});
+        var $after = $('<p>after</p>');
+        $('.box').after($('after')).css({'font-size':'40px','color':'yellow'});
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box1{
+            width: 300px;
+            height: 300px;
+            border: 1px solid pink;
+            float: left;
+            margin-right: 30px;
+        }
+        .box2{
+            width: 300px;
+            height: 300px;
+            border: 1px solid pink;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <ul>
+            <li><input type="checkbox" name="" id="">吃饭</li>
+            <li><input type="checkbox" name="" id="">睡觉</li>
+            <li><input type="checkbox" name="" id="">打豆豆</li>
+        </ul>
+    </div>
+    <button>左左左左左</button>
+    <button>右右右右右</button>
+    <div class="box2">
+        <ul></ul>
+    </div>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        // $('input').click(function(){$(this).appendTo($('.box2'))});
+
+        $('button').eq(0).click(function(){
+            $('.box1 input:checked').parent().appendTo('.box2 ul');
+            $(' input').prop('checked', false);
+        });
+        $('button:eq(1)').click(function(){
+            $('.box2 input:checked').parent().appendTo('.box1 ul');
+            $('input').prop('checked', false);
+        })
+    </script>
+</body>
+</html>
