@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="underscore.js"></script>
+    <script>
+        var arr = [123,45,754,987,245,865];
+        //源生
+        var max = arr[0];
+        var min = arr[0];
+        for(var i = 0;  i < arr.length; i++) {
+            if(max < arr[i]){
+                max = arr[i];
+            }
+            if(min > arr[i]){
+                min = arr[i];
+            }
+        }
+
+
+        //underscore
+        console.log(_.max(arr));
+        console.log(_.min(arr));
+    </script>
+</body>
+</html>

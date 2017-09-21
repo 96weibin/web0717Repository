@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function(){
+            function $() {
+                return new $.fn.init();
+            }
+            $.fn = {
+                init : function() {},
+                html : function() {
+                    '************'
+                    return this;
+                },
+                click : function(fn) {
+                    '*********'
+                    for(var i = 0; i < this.length; i++) {
+                        this[i].addEventListener('click', function(){
+                            fn.call(this);
+                        })
+                    }
+                    
+                    return this;
+                }
+            }
+            $.fn.init.prototype = $.fn();
+            window.$ = $;
+        }())
+    </script>
+</body>
+</html>

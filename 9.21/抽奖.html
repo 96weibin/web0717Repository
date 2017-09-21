@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <button>抽取</button>
+    <script src="underscore.js"></script>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        var arr = [12321.,133333,666666,8765,9999997];
+        $('button').click(function() {
+            var person = _.sample(arr);
+            arr = _.without(arr, person);
+            $('p').html(person);
+        })
+    </script>
+</body>
+</html>

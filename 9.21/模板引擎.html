@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = '我买了${name},需要${morney}元';
+        var data = {
+            name : 'iphoneX',
+            morney : '456567'
+        }
+
+        var result = str.replace(/\$\{([a-z_A-Z]+)\}/g,function (match, $1) {
+            return data[$1];
+        })
+        console.log(result);
+    </script>
+</body>
+</html>

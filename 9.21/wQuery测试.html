@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script src="wQuery.js"></script>
+    <script>
+        // $('.box1').css({'width':'100px','height':'100px','background':'yellow','position':'absolute'}).click(function(){console.log(this)}).dblclick(function(){
+        //     $('.box2').css({'width':'200px', 'height':'200px','background':'pink'})
+        // })
+
+        $('.box1').css({'width':'100px', 'height':'100px', 'background':'pink', 'position':'absolute','top':'100px','left':'100px'})
+        $('.box2').css({'width':'200px','height':'200px','background':'red','position':'absolute','top':'300px'})
+        $('div').draggable();
+    </script>
+</body>
+</html>
