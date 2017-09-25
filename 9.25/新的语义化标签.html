@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <template>
+        <ul>
+            <li>%模板%</li>
+            <li>%js正则匹配出来%</li>
+            <li>%name%</li>
+        </ul>
+    </template>
+    <figure>
+        <img src="img/1.png" alt="">            
+        <figcaption>这是一个图片 描述</figcaption>
+    </figure>
+
+    <progress value="60" max="100">60% 进度条 </progress>
+
+
+    <address>地址标签    不太好   不符合web标准</address>
+
+    
+    傻<ruby>掉<rt>diao</rt></ruby>    拼音 
+    <picture>
+        <source media="(min-width: 700px)" srcset="img/1.png">
+        <img src="" alt="不好使">
+    </picture>
+
+
+
+
+    校区<input type="text" list="school">
+    <datalist>
+        <option value="北京">北京</option>
+        <option value="武汉">武汉</option>
+        <option value="西安">西安</option>
+    </datalist>
+
+    <input type="text" autofocus>   自动获取焦点  
+    范围<input type="range"><span id='range'></span> size 
+
+
+
+    <script>
+        var oRange = document.querySelector('input[type=range]');
+        var oRangeText = oRange.nextElementSibling;
+        console.log(oRangeText)
+        oRange.onchange = function(){
+            oRangeText.innerText = oRange.value;
+        }
+    </script>
+</body>
+</html> 

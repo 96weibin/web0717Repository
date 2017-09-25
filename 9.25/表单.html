@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" id='form'></form>
+    <p> form属性只想id  就可以相当于提交到form</p>
+    用户名<input type="text" name="username" form="form">  
+
+    年龄<input type="number" name="age" value="0" form="form">
+    邮箱<input type="email" name="email" form="form">
+    网址<input type="url" name="web" form="form">
+    search <input type="search" name="find" form="form">
+    <input type="color" name="color" form="forms">
+    <input type="submit" value="提交" form="form">
+
+    <script>
+        var oColor = document.querySelector('input[name=color]');
+        oColor.onchange=function(){
+            console.log(this)
+            console.dir(this);
+            document.body.style.background = this.value;
+        }
+    </script>
+</body>
+</html>

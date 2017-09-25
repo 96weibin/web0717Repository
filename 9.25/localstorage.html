@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var obj = {
+            '小明':'xiaoming',
+            '小刚':'xiagang',
+            '小李':'xiaoli'
+        }
+        localStorage.setItem('同学',JSON.stringify(obj));
+
+        var friends = JSON.parse(localStorage.同学);
+        
+        console.log(friends);
+        
+        //存取数组
+
+        var arr = {'students':[]};
+
+        arr.students.push({'小明':'xiaoming',
+            '小刚':'xiagang',
+            '小李':'xiaoli'})
+
+
+            var objString = JSON.stringify(arr);
+
+            localStorage.setItem('list',objString);
+
+            var oList = JSON.parse(localStorage.list);
+
+            console.log(oList)
+
+            var numarr = [1,2,3,4,5,6,7,7,8];
+            var numstring = JSON.stringify(numarr)
+            console.log(numstring);
+    </script>
+</body>
+</html>
