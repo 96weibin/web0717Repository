@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            width: 500px;
+            height: 40px;
+            border: 2px solid pink;
+        }
+        .nav li{
+            float: left;
+            list-style: none;
+            width: 100px;  
+            height: 40px;
+            margin: 0 10px;          
+            perspective: 500px;
+        }
+        .nav li span{
+            position: absolute;
+            top:0px;
+            left: 0px;
+            height: 40px;
+            width: 100px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+        }
+        .unit{
+            width: 100px;
+            height: 40px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 2s ease 0s;      
+
+
+            /* 这里要注意一下   就算是零也要  写单位*/                           
+        }
+        .chinese{
+            background: #ff4400;
+            transform: translateZ(20px);
+        }
+        .english{
+            background: #0f0;
+            /* transform-origin: bottom; */
+            transform: rotateX(-90deg) translateZ(20px);
+        }
+
+        li:hover .unit{
+            transform: rotateX(90deg);
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">
+                <div class="unit">
+                    <span class="chinese">网址栏目</span>
+                    <span class="english">你真帅</span>                    
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="unit">
+                    <span class="chinese">网址栏目</span>
+                    <span class="english">你真帅</span>                    
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="unit">
+                    <span class="chinese">网址栏目</span>
+                    <span class="english">你真帅</span>                    
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="unit">
+                    <span class="chinese">网址栏目</span>
+                    <span class="english">你真帅</span>                    
+                </div>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

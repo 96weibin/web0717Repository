@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: black;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .stage{
+            width: 800px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        .unit {
+            width: 800px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease 0s;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            position: absolute;
+            left: 300px;
+            top: 125px;
+        }
+        input{
+            position: relative;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <h1>滚动鼠标</h1>
+    <div class="stage">
+        <div class="unit">
+            <ul>
+                <li><img src="img/1.png" alt=""></li>
+                <li><img src="img/2.png" alt=""></li>
+                <li><img src="img/3.png" alt=""></li>
+                <li><img src="img/4.png" alt=""></li>
+                <li><img src="img/5.png" alt=""></li>
+                <li><img src="img/6.png" alt=""></li>
+                <li><img src="img/7.png" alt=""></li>
+                <li><img src="img/8.png" alt=""></li>
+                <li><img src="img/9.png" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+        var $unit = $('.unit');
+        $('li').each(function(i){
+            $(this).css('transform','rotateY(' +(i * 40) + 'deg) translateZ(400px)'); 
+        })
+        var nowdegree = 0;
+        var lock = true;
+        //我下载的这个版本的  jq 里面 没有   mousewheel   就这么写吧
+        $('.stage')[0].onmousewheel = function(event, delta){
+            if(!lock) return;
+            event.preventDefault();
+            nowdegree -= delta * 40;
+            $unit.css('transform', 'rotateY(' + nowdegree + 'deg)');
+            lock = false;
+            setTimeout(function(){
+                lock = true;
+            }, 500);
+        }
+        // $(".stage").mousewheel(function(event,delta){
+ 		// 	//函数节流
+ 		// 	if(!lock) return;
+ 		// 	//阻止默认事件
+ 		// 	event.preventDefault();
+ 		// 	//信号量根据鼠标滚轮的方向来改变
+ 		// 	nowdegree -= delta * 40;
+
+ 		// 	$unit.css("transform","rotateY(" + nowdegree + "deg)");
+
+ 		// 	//过河拆桥
+ 		// 	lock = false;
+ 		// 	//函数截流，因为transition的动画时间是0.5s，所以500毫秒开锁
+ 		// 	setTimeout(function(){
+ 		// 		lock = true
+ 		// 	}, 500);
+ 		// });
+        var startX;
+        var startY;
+        $(document).mousedown(function(event){
+            startX = event.clientX;
+            startY = event.clientY;
+            $(document).mousemove(function(event){
+                var deltaX = event.clientX - startX;
+                var deltaY = event.clientY - startY;
+
+                $unit.css('transform','rotateX(' + -deltaY / 5 + 'deg) rotateY(' + deltaX / 5 + 'deg)' )
+                return false;
+            })
+        })
+
+        $(document).mouseup(function(){
+            $(document).off('mousemove');
+
+            $unit.css('transition', 'all 0.5s ease 0s');
+        })
+    </script>
+</body>
+</html>

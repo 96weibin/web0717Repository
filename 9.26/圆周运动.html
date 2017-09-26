@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: pink;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+        function degreeToRed(degree) {
+            return degree * Math.PI /180;
+        }
+
+        var oDiv = document.querySelector('div');
+        var a = 200;
+        var b = 200;
+        var r = 200;
+        var degree = 0;
+
+        setInterval(function(){
+            degree++;
+            var x = a + r * Math.cos(degreeToRed(degree));
+            var y = b + r * Math.sin(degreeToRed(degree));
+
+            oDiv.style.left = x + 'px';
+            oDiv.style.top = y + 'px';
+        },1)
+    </script>
+</body>
+</html>
